@@ -7,6 +7,8 @@ import android.widget.ArrayAdapter;
 
 import java.util.ArrayList;
 
+import ariel.sv.com.colorweather.Adapters.DailyWeatherAdapter;
+
 public class DailyWeatherActivity extends ListActivity {
 
 
@@ -14,19 +16,16 @@ public class DailyWeatherActivity extends ListActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daily_weather);
+        ArrayList<Day> days = new ArrayList<Day>();
+        for (int x = 0; x<500; x++){
+
+            days.add(new Day("Lunes","Hoy va a llover", "99%"));
+
+        }
 
 
-        ArrayList<String> dayArray = new  ArrayList<String>();
-        dayArray.add("Lunes");
-        dayArray.add("Martes");
-        dayArray.add("Miercoles");
-        dayArray.add("Jueves");
-        dayArray.add("Viernes");
-        dayArray.add("Sabado");
-        dayArray.add("Domingo");
+        DailyWeatherAdapter dailyWeatherAdapter = new DailyWeatherAdapter(this,days);
 
-        ArrayAdapter<String> daysAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,dayArray);
-
-        this.setListAdapter(daysAdapter);
+        this.setListAdapter(dailyWeatherAdapter);
     }
 }

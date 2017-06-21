@@ -11,7 +11,7 @@
 
 
     <TextView
-        android:id="@+id/hourlyWeatherTextView"
+        android:id="@+id/minutelyWeatherTextView"
         style="@style/mainFont"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -22,9 +22,10 @@
         android:textStyle="bold" />
 
     <ListView
+        android:id="@android:id/list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/hourlyWeatherTextView"
+        android:layout_below="@+id/minutelyWeatherTextView"
         android:layout_centerHorizontal="true" />
 
 
