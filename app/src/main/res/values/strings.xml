@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Color Weather</string>
+    <string name="pron_stico_horario">Pronóstico por hora</string>
+    <string name="pron_stico_diario">Pronóstico diario</string>
+    <string name="minutely">Minutely</string>
+    <string name="hourly">Hourly</string>
+    <string name="daily">Daily</string>
+    <string name="pronostico_por_minuto">Pronostico por minuto</string>
 </resources>
