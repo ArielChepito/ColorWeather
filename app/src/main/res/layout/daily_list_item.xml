@@ -18,12 +18,14 @@
         android:id="@+id/dailyListDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:text="Partly cloudy in the morning" />
+        tools:text="Partly cloudy in the morning"
+        android:textSize="18dp"/>
 
     <TextView
         style="@style/mainFont"
         android:id="@+id/dailyListProbality"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:text="Rain probality:24% " />
+        tools:text="Rain probality:24% "
+        android:textSize="18dp"/>
 </LinearLayout>

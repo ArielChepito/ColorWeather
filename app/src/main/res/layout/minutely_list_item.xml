@@ -18,7 +18,9 @@
         android:id="@+id/minutelyListProbability"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:text="15%" />
+        tools:text="15%"
+        android:textSize="18dp"
+        android:layout_marginBottom="10dp"/>
 
 
 </LinearLayout>

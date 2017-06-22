@@ -1,10 +1,13 @@
 package ariel.sv.com.colorweather;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by Ariel on 20/6/2017.
  */
 
-public class Hour {
+public class Hour implements Parcelable{
 
     private String title;
     private String weatherDescription;
@@ -17,6 +20,23 @@ public class Hour {
         this.title = title;
         this.weatherDescription = weatherDescription;
     }
+
+    protected Hour(Parcel in) {
+        title = in.readString();
+        weatherDescription = in.readString();
+    }
+
+    public static final Creator<Hour> CREATOR = new Creator<Hour>() {
+        @Override
+        public Hour createFromParcel(Parcel in) {
+            return new Hour(in);
+        }
+
+        @Override
+        public Hour[] newArray(int size) {
+            return new Hour[size];
+        }
+    };
 
     public String getTitle() {
         return title;
@@ -32,5 +52,18 @@ public class Hour {
 
     public void setWeatherDescription(String weatherDescription) {
         this.weatherDescription = weatherDescription;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+
+        dest.writeString(title);
+        dest.writeString(weatherDescription);
+
     }
 }

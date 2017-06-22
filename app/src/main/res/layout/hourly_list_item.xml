@@ -18,7 +18,8 @@
         android:id="@+id/hourlyListDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:text="Clear" />
+        tools:text="Clear"
+        android:textSize="18dp"/>
 
 
 </LinearLayout>

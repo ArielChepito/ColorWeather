@@ -2,6 +2,7 @@ package ariel.sv.com.colorweather;
 
 import android.app.Activity;
 import android.app.ListActivity;
+import android.content.Intent;
 import android.os.Bundle;
 
 import java.util.ArrayList;
@@ -17,13 +18,8 @@ public class HourlyWeatherActivity extends ListActivity {
         setContentView(R.layout.activity_hourly_weather);
 
 
-
-        ArrayList<Hour> hour = new ArrayList<Hour>();
-        for (int x = 0; x<500; x++){
-
-            hour.add(new Hour("19:00","Despejado"));
-
-        }
+        Intent intent = getIntent();
+        ArrayList<Hour> hour =intent.getParcelableArrayListExtra(MainActivity.HOUR_ARRAY_LIST);
 
 
         HourlyWeatherAdapter dailyWeatherAdapter = new HourlyWeatherAdapter(this,hour);

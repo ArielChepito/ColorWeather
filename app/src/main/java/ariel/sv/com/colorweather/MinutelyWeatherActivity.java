@@ -1,9 +1,12 @@
 package ariel.sv.com.colorweather;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -15,25 +18,47 @@ public class MinutelyWeatherActivity extends Activity {
 
 
     @BindView(R.id.minutelyRecyclerView) RecyclerView minutelyRecyclerView;
+    @BindView(R.id.noDataRecycler) TextView noDataRecybler;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_minutely_weather);
         ButterKnife.bind(this);
+        Intent intent = getIntent();
+        ArrayList<Minute> minutes = intent.getParcelableArrayListExtra(MainActivity.MINUTE_ARRAY_LIST);
 
-        ArrayList<Minute> minutes = new ArrayList<Minute>();
-        minutes.add(new Minute("19:55","45%"));
-        minutes.add(new Minute("12:55","99%"));
 
-        MinutelyWeatherAdapter minutelyWeatherAdapter = new MinutelyWeatherAdapter(this,minutes);
+        if(minutes != null && !minutes.isEmpty() ){
 
-        minutelyRecyclerView.setAdapter(minutelyWeatherAdapter);
+            noDataRecybler.setVisibility(View.GONE);
+            minutelyRecyclerView.setVisibility(View.VISIBLE);
 
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+            MinutelyWeatherAdapter minutelyWeatherAdapter = new MinutelyWeatherAdapter(this,minutes);
 
-        minutelyRecyclerView.setLayoutManager(layoutManager);
+            minutelyRecyclerView.setAdapter(minutelyWeatherAdapter);
 
-        minutelyRecyclerView.setHasFixedSize(true);
+            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+
+            minutelyRecyclerView.setLayoutManager(layoutManager);
+
+            minutelyRecyclerView.setHasFixedSize(true);
+
+
+        }
+        else{
+
+            //desplegar no data textview
+
+            //volver recycler view invisible
+
+            noDataRecybler.setVisibility(View.VISIBLE);
+            minutelyRecyclerView.setVisibility(View.GONE);
+
+        }
+
+
+
 
 
 
