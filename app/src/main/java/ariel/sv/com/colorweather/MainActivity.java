@@ -76,10 +76,16 @@ public class MainActivity extends Activity {
 
         String forecastUrl ="https://api.darksky.net/forecast";
         String apiKey ="a5377b366aad874f7941efdaf70c1464";
-        String latitude ="37.8267";
-        String longitude ="-122.4233";
+        //String latitude ="37.8267";
+        //String longitude ="-122.4233";
+
+
+        String latitude ="13.739";
+        String longitude ="-89.216";
+
         String units ="units=si";
         String url =forecastUrl+ "/"+apiKey+"/"+latitude+","+longitude+"?"+units+"";
+        Log.d(TAG, url);
         //String url ="https://api.darksky.net/forecast/a5377b366aad874f7941efdaf70c1464/37.8267,-122.4233?units=si";
 
         // Request a string response from the provided URL.
@@ -92,9 +98,6 @@ public class MainActivity extends Activity {
                         try {
                             CurrentWeather currentWeather = getCurrentWeatherFromJson(response);
 
-                            days = getDailyWeatherFromJson(response);
-                            hours = getHourlyWeatherFromJson(response);
-                            minutes = getMinutelyWeatherFromJson(response);
 
                             iconImageView.setImageDrawable(currentWeather.getIconDrawableResource());
                             descriptionTextView.setText(currentWeather.getDescription());
@@ -102,9 +105,13 @@ public class MainActivity extends Activity {
                             highestTempTextView.setText(String.format("H: %s °",currentWeather.getHighestTemperature()));
                             lowestTempTextView.setText(String.format("L: %s °", currentWeather.getLowestTemperature()));
 
+                            days = getDailyWeatherFromJson(response);
+                            hours = getHourlyWeatherFromJson(response);
+                            minutes = getMinutelyWeatherFromJson(response);
+
 
                         } catch (JSONException e) {
-                            e.printStackTrace();
+                            Log.d(TAG,"Error:"+  e.getMessage());
                         }
                     }
                 }, new Response.ErrorListener() {
